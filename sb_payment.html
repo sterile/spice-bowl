@@ -20,11 +20,24 @@
     <title>Spice Bowl Payment Form</title>
     <link href="sb_reset.css" rel="stylesheet" />
     <link href="sb_styles.css" rel="stylesheet" />
+    <link href="sb_forms.css" rel="stylesheet" />
+    <link href="sb_validate.css" rel="stylesheet" />
+    <script src="sb_script.js"></script>
 </head>
 
 <body>
     <header>
         <img src="sb_logo.png" alt="The Spice Bowl" />
+
+        <form id="login" action="http://www.example.com/sb/login" method="post">
+
+            <div class="formRow">
+                <input name="userBox" id="userBox" type="text" placeholder="username" />
+                <input name="pwdBox" id="pwdBox" type="password" placeholder="password" />
+            </div>
+
+        </form>
+
 
         <nav> <a id="navicon" href="#"><img src="sb_navicon.png" alt="" /></a>
             <ul>
@@ -39,6 +52,154 @@
 
     <section>
         <h1>Payment Form</h1>
+        <form id="payment" action="http://www.example.com/sb/payment" method="post">
+
+            <fieldset id="billing">
+                <legend>Billing Information(required)</legend>
+                <label for="fName">First Name</label>
+                <input name="fName" id="firstBox" type="text" required />
+
+                <label for="lName">Last Name</label>
+                <input name="lName" id="lastBox" type="text" required />
+
+                <label for="street">Street Address</label>
+                <input name="street" id="streetBox" type="text" required />
+
+                <label for="street2">Street Address (2)</label>
+                <input name="street2" id="streetBox2" type="text" />
+
+                <label for="city">City</label>
+                <input name="city" id="cityBox" type="text" required />
+
+                <label for="state">State</label>
+                <input name="state" list="stateList" id="stateBox" type="text" required />
+                <datalist id="stateList">
+                    <option value="AL" />
+                    <option value="AK" />
+                    <option value="AZ" />
+                    <option value="AR" />
+                    <option value="CA" />
+                    <option value="CO" />
+                    <option value="CT" />
+                    <option value="DE" />
+                    <option value="FL" />
+                    <option value="GA" />
+                    <option value="HI" />
+                    <option value="ID" />
+                    <option value="IL" />
+                    <option value="IN" />
+                    <option value="IA" />
+                    <option value="KS" />
+                    <option value="KY" />
+                    <option value="LA" />
+                    <option value="ME" />
+                    <option value="MD" />
+                    <option value="MA" />
+                    <option value="MI" />
+                    <option value="MN" />
+                    <option value="MS" />
+                    <option value="MO" />
+                    <option value="MT" />
+                    <option value="NE" />
+                    <option value="NV" />
+                    <option value="NH" />
+                    <option value="NJ" />
+                    <option value="NM" />
+                    <option value="NY" />
+                    <option value="NC" />
+                    <option value="ND" />
+                    <option value="OH" />
+                    <option value="OK" />
+                    <option value="OR" />
+                    <option value="PA" />
+                    <option value="RI" />
+                    <option value="SC" />
+                    <option value="SD" />
+                    <option value="TN" />
+                    <option value="TX" />
+                    <option value="UT" />
+                    <option value="VT" />
+                    <option value="VA" />
+                    <option value="WA" />
+                    <option value="WV" />
+                    <option value="WI" />
+                    <option value="WY" />
+                </datalist>
+
+                <label for="zip">ZIP/Postal Code</label>
+                <input name="zip" id="zipBox" type="text" pattern="^\d{5}(\-\d{4})?$" />
+
+                <label for="country">Country</label>
+                <input name="country" id="countryBox" type="text" value="United States" required />
+
+                <label for="phone">Phone</label>
+                <input name="phone" id="phoneBox" type="tel" required pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$" />
+
+
+            </fieldset>
+
+            <fieldset id="creditCard">
+                <legend>Credit Card (required)</legend>
+
+                <fieldset id="cardlabel">
+                    <label class="cardLabel">
+                        <input name="cardLabel" value="amex" type="radio" required />
+                        <img src="sb_amex.png" />
+                    </label>
+
+                    <label class="cardLabel">
+                        <input name="cardLabel" value="discover" type="radio" required />
+                        <img src="sb_discover.png" />
+                    </label>
+
+                    <label class="cardLabel">
+                        <input name="cardLabel" value="master" type="radio" required />
+                        <img src="sb_master.png" />
+                    </label>
+
+                    <label class="cardLabel">
+                        <input name="cardLabel" value="visa" type="radio" required />
+                        <img src="sb_visa.png" />
+                    </label>
+
+                </fieldset>
+                <label for="cardNumber">Credit Card Number</label>
+                <input name="cardNumber" id="cardBox" type="text" required pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" />
+
+                <label for="cardMonth">Expiration Date</label>
+                <select name="cardMonth" id="monthList" required>
+                    <option value=" ">--Month--</option>
+                    <option value="1">January (01)</option>
+                    <option value="2">February (02)</option>
+                    <option value="3">March (03)</option>
+                    <option value="4">April (04)</option>
+                    <option value="5">May (05)</option>
+                    <option value="6">June (06)</option>
+                    <option value="7">July (07)</option>
+                    <option value="8">August (08)</option>
+                    <option value="9">September (09)</option>
+                    <option value="10">October (10)</option>
+                    <option value="11">November (11)</option>
+                    <option value="12">December (12)</option>
+                </select>
+                <select name="cardYear" id="yearList" required>
+                    <option value=" ">--Year--</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                </select>
+
+                <label for="csc">CSC</label>
+                <input name="csc" id="cscBox" type="text" maxlength="3" pattern="^\d{3}$" placeholder="nnn" required />
+            </fieldset>
+
+
+            <button type="submit">
+                <img src="sb_button.png" alt="next" />
+            </button>
+        </form>
 
         <aside>
             <h1>Menu Ideas</h1>
@@ -52,7 +213,6 @@
                 add salt and toss again. Spread in a single layer on a baking
                 sheet. Bake about 15 minutes. Cook on baking sheet.
             </p>
-
             <h2>Dried Beef Sticks</h2>
             <ul>
                 <li>5 lbs. ground chuck</li>
@@ -71,7 +231,6 @@
         </aside>
 
     </section>
-
     <footer>
         <nav>
             <ul>
